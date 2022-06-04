@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.1.0",
+    "react-circular-progressbar": "^2.0.4",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -43,6 +44,8 @@
     "@babel/preset-react": "7.x",
     "eslint": "7.x",
     "eslint-config-airbnb": "18.x",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",

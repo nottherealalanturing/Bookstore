@@ -1,14 +1,17 @@
-import Book from './components/Book';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import { Books, Category } from './pages';
 
 function App() {
   return (
-    <Book
-      author="Suzanne Collins"
-      title="The Hunger Games"
-      genre="Action"
-      completed="65"
-      chapter="27"
-    />
+    <div className="App">
+      <Header />
+      <Routes>
+        <Route path="/" index element={<Books />} />
+        <Route path="/category" element={<Category />} />
+      </Routes>
+    </div>
   );
 }
 

@@ -2,22 +2,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.leftblock {
-  display: flex;
-  flex-direction: column;
-}
-
-.bookgenre {
-}
-
-.booktitle {
-}
-
-.bookauthor {
-}
-
-.modifycolumn {
-  display: flex;
-  justify-content: space-between;
-}

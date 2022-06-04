@@ -7,8 +7,8 @@ const Books = () => {
       <ul>
         {Array(5)
           .fill('')
-          .map((book) => {
-            return <Book />;
+          .map((book, index) => {
+            return <Book name={index} />;
           })}
       </ul>
     </div>

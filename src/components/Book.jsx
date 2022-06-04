@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles/book.module.css';
+import styles from './styles/book.css';
 
 const Book = (props) => {
   const { author, title, genre, completed, chapter } = props;
@@ -16,11 +16,11 @@ const Book = (props) => {
 Book.LeftBlock = (props) => {
   const { author, title, genre } = props;
   return (
-    <div className={styles.leftblock}>
-      <p className={styles.bookgenre}>{genre}</p>
-      <h2 className={styles.booktitle}>{title}</h2>
-      <p className={styles.bookauthor}>{author}</p>
-      <div className={styles.modifycolumn}>
+    <div className="leftblock">
+      <p className="bookgenre">{genre}</p>
+      <h2 className="booktitle">{title}</h2>
+      <p className="bookauthor">{author}</p>
+      <div className="modifycolumn">
         <button type="button">Comments</button>
         <button type="button">Remove</button>
         <button type="button">Edit</button>
@@ -35,7 +35,7 @@ Book.MiddleBlock = (props) => {
     <div className="middleblock">
       <span className="completedPercentage"></span>
       <div>
-        <p>completed</p>
+        <p>{completed}</p>
       </div>
     </div>
   );

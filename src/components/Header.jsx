@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './styles/header.css';
+import './header.css';
 
 const Header = () => (
-  <div className={styles.navbar}>
+  <div className="navigation">
     <h1>Bookstore CMS</h1>
     <nav>
-      <Link to="/" className={styles.links}>
+      <Link to="/" className="links">
         Books
       </Link>
-      <Link to="/category" className={styles.links}>
+      <Link to="/category" className="links">
         Category
       </Link>
     </nav>

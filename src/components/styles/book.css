@@ -1,0 +1,4 @@
+.bookContainer {
+  display: flex;
+  justify-content: space-between;
+}

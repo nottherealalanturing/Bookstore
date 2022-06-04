@@ -2,6 +2,8 @@
 
 # Bookstore
 
+A bookstore bootstrapped with react for cataloging books.
+
 ## Built With 🔨
 
 - React
@@ -9,7 +11,6 @@
 - Git/GitHub work-flow
 
 ## Link
-
 
 ### Installation
 
@@ -58,3 +59,13 @@ Contributions, issues, and feature requests are welcome!
 
 Give a ⭐️ if you like this project!
 ```
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.

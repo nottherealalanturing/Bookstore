@@ -2,7 +2,7 @@
 
 # Bookstore
 
-A bookstore bootstrapped with react for cataloging books.
+A bookstore app bootstrapped with React(CRA) for cataloging books.
 
 ## Built With 🔨
 

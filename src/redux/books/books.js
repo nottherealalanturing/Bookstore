@@ -11,7 +11,11 @@ export const deleteBook = (book) => ({
   payload: book,
 });
 
-const initialState = [];
+const initialState = [
+  { author: 'Suzanne Collins', title: 'The Hunger Games', genre: 'Action' },
+  { author: 'Harper Lee', title: 'To Kill a mockingbird', genre: 'Action' },
+  { author: 'F. Scott Fitzgerald', title: 'The Great Gatsby', genre: 'Action' },
+];
 
 const booksReducer = (books = initialState, action) => {
   switch (action.type) {

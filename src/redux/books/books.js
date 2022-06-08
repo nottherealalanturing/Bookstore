@@ -1,7 +1,13 @@
+import axios from 'axios';
+
+const baseURL =
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/PYvju9tS8O3lJv99pDDU/books';
+
 const ADD_BOOK = 'books/addBook';
 const DELETE_BOOK = 'books/remove';
+const GET_BOOKS = 'books/get';
 
-export const addBook = (book) => ({
+export const  = (book) => ({
   type: ADD_BOOK,
   payload: book,
 });
@@ -11,33 +17,42 @@ export const deleteBook = (id) => ({
   payload: id,
 });
 
-const initialState = [
-  {
-    id: 1,
-    author: 'Suzanne Collins',
-    title: 'The Hunger Games',
-    genre: 'Action',
-  },
-  {
-    id: 2,
-    author: 'Harper Lee',
-    title: 'To Kill a mockingbird',
-    genre: 'Action',
-  },
-  {
-    id: 3,
-    author: 'F. Scott Fitzgerald',
-    title: 'The Great Gatsby',
-    genre: 'Action',
-  },
-];
+export const addBook = (book) => (dispatch) =>
+  axios
+    .get(baseURL)
+    .then((res) => {
+      if (res) {
+        console.log(res);
+      /*   dispatch({ type: ADD_BOOK, payload: book }) */
+     }})
+    .catch(() => {});
 
-const booksReducer = (books = initialState, action) => {
+export const getBooks = () => (dispatch) =>
+  axios
+    .get(baseURL)
+    .then((res) => res.data)
+    .then((data) => {
+      const books = Object.keys(data).map((key) => {
+        const book = data[key][0];
+        return {
+          id: key,
+          ...book,
+        };
+      });
+      dispatch({ type: GET_BOOKS, payload: books });
+    })
+    .catch(() => {});
+
+
+const booksReducer = (books = [], action) => {
   switch (action.type) {
     case ADD_BOOK:
       return [...books, action.payload];
     case DELETE_BOOK: {
       return books.filter((book) => book.title !== action.payload);
+    }
+    case GET_BOOKS: {
+      return [...action.payload];
     }
     default:
       return books;

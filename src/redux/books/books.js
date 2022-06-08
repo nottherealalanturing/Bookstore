@@ -7,11 +7,6 @@ const ADD_BOOK = 'books/addBook';
 const DELETE_BOOK = 'books/remove';
 const GET_BOOKS = 'books/get';
 
-/* export const deleteBook = (id) => ({
-  type: DELETE_BOOK,
-  payload: id,
-}); */
-
 export const deleteBook = (id) => (dispatch) =>
   axios({
     method: 'delete',

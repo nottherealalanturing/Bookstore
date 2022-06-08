@@ -5,7 +5,7 @@ import Form from '../components/Form';
 import { addBook, deleteBook } from '../redux/books/books';
 
 const Books = () => {
-  const [form, setForm] = React.useState({});
+  const [form, setForm] = React.useState({ title: '', author: '' });
 
   const books = useSelector((state) => state.books);
   const dispatch = useDispatch();

@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import Book from '../components/Book';
 import Form from '../components/Form';
-import { addBook, deleteBook } from '../redux/books/books';
+import { addBook, deleteBook, getBooks } from '../redux/books/books';
 
 const Books = () => {
-  const [form, setForm] = React.useState({ title: '', author: '' });
-
+  const [form, setForm] = React.useState({ title: '', author: '', category: 'Fiction' });
   const books = useSelector((state) => state.books);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, []);
 
   const handleUpdate = (event) => {
     const { name, value } = event.target;
@@ -18,7 +22,14 @@ const Books = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (form.title && form.author) {
-      dispatch(addBook(form));
+      dispatch(
+        addBook({
+          item_id: uuidv4(),
+          title: form.title,
+          author: form.author,
+          category: 'Fiction',
+        })
+      );
     }
     setForm({ title: '', author: '' });
   };
@@ -27,26 +38,31 @@ const Books = () => {
     dispatch(deleteBook(e));
   };
 
-  return (
-    <div className="books">
-      <ul>
-        {books.map((book) => (
-          <Book
-            author={book.author}
-            title={book.title}
-            id={book.title}
-            key={book.title}
-            handleDeleteProps={handleDelete}
+  if (books !== []) {
+    return (
+      <>
+        <div className="books">
+          <ul>
+            {books.map((book) => (
+              <Book
+                author={book.author}
+                title={book.title}
+                id={book.id}
+                key={book.id}
+                handleDeleteProps={handleDelete}
+              />
+            ))}
+          </ul>
+          <Form
+            handleUpdateProps={handleUpdate}
+            formStateProps={form}
+            handleSubmitProps={handleSubmit}
           />
-        ))}
-      </ul>
-      <Form
-        handleUpdateProps={handleUpdate}
-        formStateProps={form}
-        handleSubmitProps={handleSubmit}
-      />
-    </div>
-  );
+        </div>
+      </>
+    );
+  }
+  return <h2>Please add a book</h2>;
 };
 
 export default Books;

@@ -7,24 +7,36 @@ const ADD_BOOK = 'books/addBook';
 const DELETE_BOOK = 'books/remove';
 const GET_BOOKS = 'books/get';
 
-export const  = (book) => ({
-  type: ADD_BOOK,
-  payload: book,
-});
-
-export const deleteBook = (id) => ({
+/* export const deleteBook = (id) => ({
   type: DELETE_BOOK,
   payload: id,
-});
+}); */
+
+export const deleteBook = (id) => (dispatch) =>
+  axios({
+    method: 'delete',
+    url: `baseURL:${id}`,
+  })
+    .then((res) => {
+      if (res.status === 201) {
+        dispatch({ type: DELETE_BOOK, payload: id });
+      }
+    })
+    .catch(() => {});
 
 export const addBook = (book) => (dispatch) =>
-  axios
-    .get(baseURL)
+  axios({
+    method: 'post',
+    url: baseURL,
+    data: {
+      ...book,
+    },
+  })
     .then((res) => {
-      if (res) {
-        console.log(res);
-      /*   dispatch({ type: ADD_BOOK, payload: book }) */
-     }})
+      if (res.status === 201) {
+        dispatch({ type: ADD_BOOK, payload: book });
+      }
+    })
     .catch(() => {});
 
 export const getBooks = () => (dispatch) =>
@@ -42,7 +54,6 @@ export const getBooks = () => (dispatch) =>
       dispatch({ type: GET_BOOKS, payload: books });
     })
     .catch(() => {});
-
 
 const booksReducer = (books = [], action) => {
   switch (action.type) {

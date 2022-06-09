@@ -13,6 +13,7 @@ const Book = (props) => {
           <button data-id={id} type="button" className="lbBtn">
             Comments
           </button>
+          <span className="btnLine" />
           <button
             data-id={id}
             type="button"
@@ -21,6 +22,7 @@ const Book = (props) => {
           >
             Remove
           </button>
+          <span className="btnLine" />
           <button data-id={id} type="button" className="lbBtn">
             Edit
           </button>
@@ -39,7 +41,7 @@ const Book = (props) => {
         <div className="rightblock">
           <div className="chapter">CURRENT CHAPTER</div>
           <div className="lesson">Chapter 309</div>
-          <button type="button" className="UpdateData">
+          <button type="button" className="updateProgress">
             UPDATE PROGRESS
           </button>
         </div>

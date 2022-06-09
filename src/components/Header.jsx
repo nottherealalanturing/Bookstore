@@ -1,19 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles/header.css';
 
 const Header = () => (
-  <div className="navigation">
-    <h1>Bookstore CMS</h1>
-    <nav>
-      <Link to="/" className="links">
-        Books
+  <>
+    <nav className="navigation">
+      <h1 className="header-text">Bookstore CMS</h1>
+      <Link to="/" className="link">
+        BOOKS
       </Link>
-      <Link to="/category" className="links">
-        Category
+      <Link to="/category" className="link">
+        CATEGORY
       </Link>
     </nav>
-  </div>
+  </>
 );
 
 export default Header;

@@ -18,7 +18,7 @@ const Category = () => {
           <p key={category}>{category}</p>
         ))}
       </ul>
-      <button className="category-btn" type="button" onClick={() => handleCategory()}>
+      <button className="UpdateData" type="button" onClick={() => handleCategory()}>
         Check Status
       </button>
     </div>

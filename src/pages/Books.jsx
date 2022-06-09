@@ -49,6 +49,7 @@ const Books = () => {
                 title={book.title}
                 id={book.id}
                 key={book.id}
+                category={book.category}
                 handleDeleteProps={handleDelete}
               />
             ))}

@@ -37,7 +37,7 @@ const Book = (props) => {
             <div className="completed">Completed</div>
           </span>
         </div>
-
+        <span className="line2" />
         <div className="rightblock">
           <div className="chapter">CURRENT CHAPTER</div>
           <div className="lesson">Chapter 309</div>

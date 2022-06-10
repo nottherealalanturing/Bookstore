@@ -271,3 +271,10 @@
   padding-top: 20px;
   margin-bottom: 50px;
 }
+
+.line2 {
+  width: 0.125rem;
+  height: 4.375rem;
+  margin: 1.125rem 3.688rem 0 4.938rem;
+  border: solid 1px #e8e8e8;
+}

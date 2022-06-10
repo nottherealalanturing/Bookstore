@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Book = (props) => {
+ // eslint-disable-next-line object-curly-newline
   const { author, category, title, id, handleDeleteProps } = props;
   return (
     <li className="book-panel">

@@ -19,12 +19,23 @@
   display: inline-block;
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .navigation {
   background-color: #fff;
   padding: 1rem;
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
+}
+
+.profile {
+  color: #0290ff;
+  width: 25px;
 }
 
 .link {

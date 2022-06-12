@@ -28,6 +28,7 @@ const Books = () => {
           title: form.title,
           author: form.author,
           category: 'Fiction',
+          // eslint-disable-next-line comma-dangle
         })
       );
     }

@@ -1,6 +1,6 @@
 {
   "name": "bookstore",
-  "homepage": "https://nottherealalanturing.github.io/bookstore",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

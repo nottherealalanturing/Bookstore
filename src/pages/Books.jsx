@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Book from '../components/Book';
 import Form from '../components/Form';
-import { addBook, deleteBook, getBooks } from '../redux/books/books';
+import { addBook, deleteBook, fetchBooks } from '../redux/books/books';
 
 const Books = () => {
   const [form, setForm] = React.useState({ title: '', author: '', category: 'Fiction' });
@@ -11,7 +11,7 @@ const Books = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBooks());
+    dispatch(fetchBooks());
   }, []);
 
   const handleUpdate = (event) => {

@@ -1,64 +1,60 @@
 import axios from 'axios';
-
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/PYvju9tS8O3lJv99pDDU/books';
 
-const ADD_BOOK = 'books/addBook';
-const DELETE_BOOK = 'books/remove';
-const GET_BOOKS = 'books/get';
+export const addBook = createAsyncThunk('books/addBook', async(book, thunkAPI) => {
+  const data = await axios({
+    method: 'post',
+    url: baseURL,
+    data: {
+      ...book,
+    },
+  });
+  return data.data;
+})
 
-export const addBook = (book) => (dispatch) => axios({
-  method: 'post',
-  url: baseURL,
-  data: {
-    ...book,
+export const deleteBook = createAsyncThunk('books/deleteBook', async (bookId, thunkAPI) => {
+  const data = await axios({
+    method: 'delete',
+    url: `${baseURL}/${id}`,
+  });
+  return data.data
+})
+
+export const fetchBooks = createAsyncThunk('books/fetchBooks', async (args, thunkAPI) => {
+  const data = await  axios.get(baseURL);
+  return data.data;
+})
+
+const booksSlice = createSlice({
+  name: 'books',
+  initialState: [],
+  reducers: {
+    
   },
+  extraReducers: (builder) => {
+    builder.addCase(addBook.fulfilled, (state, action) => {
+      state.push(action.payload)
+    }),
+    builder.addCase(deleteBook.fulfilled, (state, action) => {
+      state.filter((book) => book.id !== action.payload);
+    }),
+    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+      const books = Object.keys(data).map((key) => {
+        const book = data[key][0];
+        return {
+          id: key,
+          ...book,
+        };
+      });
+      state = books;
+    }),
+  },
+
 })
-  .then((res) => {
-    if (res.status === 201) {
-      dispatch({ type: ADD_BOOK, payload: book });
-    }
-  })
-  .catch((e) => e);
 
-export const deleteBook = (id) => (dispatch) => axios({
-  method: 'delete',
-  url: `${baseURL}/${id}`,
-})
-  .then((res) => {
-    if (res.status === 201) {
-      dispatch({ type: DELETE_BOOK, payload: id });
-    }
-  })
-  .catch((e) => e);
+const {actions, reducer} = booksSlice
 
-export const getBooks = () => (dispatch) => axios
-  .get(baseURL)
-  .then((res) => res.data)
-  .then((data) => {
-    const books = Object.keys(data).map((key) => {
-      const book = data[key][0];
-      return {
-        id: key,
-        ...book,
-      };
-    });
-    dispatch({ type: GET_BOOKS, payload: books });
-  })
-  .catch((e) => e);
-
-const booksReducer = (books = [], action) => {
-  switch (action.type) {
-    case ADD_BOOK:
-      return [...books, action.payload];
-    case DELETE_BOOK: {
-      return books.filter((book) => book.id !== action.payload);
-    }
-    case GET_BOOKS: {
-      return [...action.payload];
-    }
-    default:
-      return books;
-  }
-};
-
-export default booksReducer;
+/* export {} = actions;
+ */
+export default reducer

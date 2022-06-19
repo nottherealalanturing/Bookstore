@@ -1,26 +1,25 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const baseURL =
-  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/PYvju9tS8O3lJv99pDDU/books';
+const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/PYvju9tS8O3lJv99pDDU/books';
 
 export const addBook = createAsyncThunk('books/addBook', async (book) => {
-  const data = await axios({
+  await axios({
     method: 'post',
     url: baseURL,
     data: {
       ...book,
     },
   });
-  return data.data;
+  return book;
 });
 
-export const deleteBook = createAsyncThunk('books/deleteBook', async (bookId) => {
-  const data = await axios({
+export const deleteBook = createAsyncThunk('books/deleteBook', async (args) => {
+  await axios({
     method: 'delete',
-    url: `${baseURL}/${bookId}`,
+    url: `${baseURL}/${args}`,
   });
-  return data.data;
+  return args;
 });
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
@@ -37,7 +36,8 @@ const booksSlice = createSlice({
       state.push(action.payload);
     });
     builder.addCase(deleteBook.fulfilled, (state, action) => {
-      state.filter((book) => book.id !== action.payload);
+      const newState = state.filter((book) => book.id !== action.payload);
+      return newState;
     });
     builder.addCase(fetchBooks.fulfilled, (state, action) => {
       const books = Object.keys(action.payload).map((key) => {

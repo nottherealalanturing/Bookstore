@@ -25,17 +25,7 @@ export const deleteBook = createAsyncThunk('books/deleteBook', async (bookId) =>
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
   const data = await axios.get(baseURL);
-  const dataa = data.data;
-
-  dataa.map((key) => console.log(key));
-  /* const book = data[key][0];
-    /* return {
-      id: key,
-      ...book,
-    };
-  });
-  console.log(books) */
-  return 'books';
+  return data.data;
 });
 
 const booksSlice = createSlice({
@@ -49,7 +39,16 @@ const booksSlice = createSlice({
     builder.addCase(deleteBook.fulfilled, (state, action) => {
       state.filter((book) => book.id !== action.payload);
     });
-    builder.addCase(fetchBooks.fulfilled, (state, action) => action.payload);
+    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+      const books = Object.keys(action.payload).map((key) => {
+        const book = action.payload[key][0];
+        return {
+          id: key,
+          ...book,
+        };
+      });
+      return books;
+    });
   },
 });
 

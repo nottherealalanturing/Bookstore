@@ -1,51 +1,37 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e0f14414-e46b-4264-85f4-02a55abbb7e4/deploy-status)](https://app.netlify.com/sites/remarkable-cupcake-36a101/deploys)
 
 # Bookstore
 
-A bookstore app bootstrapped with React(CRA) for cataloging books.
+ This is a React app that catalogs books.
 
-## Built With 🔨
+## Built With
 
-- React
-- Linters (Lighthouse, Webhint, Stylelint, Eslint)
-- Git/GitHub work-flow
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [React-Router](https://reactrouter.com/)
+- API
 
-## Link
-[Bookstore](https://sunny-kashata-4f8ce3.netlify.app/)
+## Live Demo
 
-### Installation
+[BOOKSTORE](https://sunny-kashata-4f8ce3.netlify.app/)
 
-- clone this repo `git clone git@github.com:nottherealalanturing/bookstore.git` on your terminal.
-- Type `cd bookstore` to access the project on the terminal.
+## Getting Started
+To get a local copy up and running follow these simple example steps.
 
-#### Install dependencies
+- Copy this link `https://github.com/nottherealalanturing/Bookstore`.
+- Get the directory that you want to clone the repository.
+- Open the command prompt in this directory.
+- Write `https://github.com/nottherealalanturing/Bookstore`.
+- Go to the repository folder in your command prompt `cd Bookstore`.
+- Run `yarn install` to install the React and linter dependencies.
+- Run `yarn build` to build the application with react .
+- Run `yarn start` to start the development server.
+- Run `yarn test` to run the tests.
 
-```
-npm install
-
-### Build the app
-
-```
-
-npm run build
-
-```
-
-### Run the app
-
-```
-
-npm start
-
-```
-
-### Prerequisites
-
-- IDE
-- Git.
-- Npm and node.js installed.
 
 ## Authors
+
 
 👤 **Assad Isah**
 
@@ -56,10 +42,11 @@ npm start
 
 Contributions, issues, and feature requests are welcome!
 
+Feel free to check the [issues page](../../issues/).
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
-```
 
 ## Acknowledgments
 

@@ -22,14 +22,13 @@ const Books = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (form.title && form.author) {
-      dispatch(
-        addBook({
-          item_id: uuidv4(),
-          title: form.title,
-          author: form.author,
-          category: 'Fiction',
-        })
-      );
+      const bookObject = {
+        item_id: uuidv4(),
+        title: form.title,
+        author: form.author,
+        category: 'Fiction',
+      };
+      dispatch(addBook(bookObject));
     }
     setForm({ title: '', author: '' });
   };
